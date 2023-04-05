@@ -22,7 +22,7 @@ class ViewController: UIViewController {
 
     // MARK: - Private IBAction
     @IBAction private func sladerChanger(_ sender: UISlider) {
-        setupSladerChanger()
+        setupSladerChanger(sender)
     }
 
 }
@@ -30,7 +30,7 @@ class ViewController: UIViewController {
 // MARK: - private extension
 private extension ViewController {
 
-    func setupSladerChanger() {
+    func setupSladerChanger(_ sender: UISlider) {
         let temperatureCelsius = Int(round(sender.value))
         cenliusLabel.text = "\(temperatureCelsius)ºC"
 
