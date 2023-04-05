@@ -9,24 +9,33 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    @IBOutlet weak var cenliusLabel: UILabel!
-    @IBOutlet weak var fahrenheitLabel: UILabel!
-    @IBOutlet weak var slader: UISlider!{
+    // MARK: - Private IBOutlet
+    @IBOutlet private weak var cenliusLabel: UILabel!
+    @IBOutlet private weak var fahrenheitLabel: UILabel!
+    @IBOutlet private weak var slader: UISlider! {
         didSet {
             slader.maximumValue = 100
             slader.minimumValue = 0
             slader.value = 0
         }
     }
-    
-    @IBAction func sladerChanger(_ sender: UISlider) {
+
+    // MARK: - Private IBAction
+    @IBAction private func sladerChanger(_ sender: UISlider) {
+        setupSladerChanger()
+    }
+
+}
+
+// MARK: - private extension
+private extension ViewController {
+
+    func setupSladerChanger() {
         let temperatureCelsius = Int(round(sender.value))
         cenliusLabel.text = "\(temperatureCelsius)ºC"
-        
+
         let fahrenheitTemperature = Int (round (sender.value * 9 / 5) + 32 )
         fahrenheitLabel.text = "\(fahrenheitTemperature)ºF"
     }
-    
-    
-}
 
+}
